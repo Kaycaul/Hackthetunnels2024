@@ -5,17 +5,24 @@ import "./Login.style.scss";
 
 function Login() {
   const [message, setMessage] = useState(null);
-  const [count, setCount] = useState(0);
   const { login } = useAccountContext();
+  const [user, setUser] = useState("")
+  const [password, setPassword] = useState("")
 
   const attemptLogin = async () => {
     try {
-      const message = await login("admin@email.com", "password");
+      const message = await login(user, password);
       setMessage(message);
     } catch (error) {
       console.log(error);
     }
   };
+
+  function DoStuff(u, p) {
+    setUser(u.value)
+    setPassword(p.value)
+    attemptLogin()
+  }
 
   return (
     <Layout>
@@ -31,18 +38,12 @@ function Login() {
                 MyCarletonOne
               </a>{" "}
               username and password.
-            </div>
-            <div>
-              <p>You clicked {count} times</p>
-              <button onClick={() => setCount(count + 1)}>
-                Click me
-              </button>
-            </div>
+            </div>  
           </div>
           {message && <p>{message}</p>}
           <div className="Login__panel__content__input">
-            <input type="text" placeholder="MyCarletonOne username"></input>
-            <input type="password" placeholder="Password"></input>
+            <input type="text" id = "user" placeholder="MyCarletonOne username"></input>
+            <input type="password" id = "pass" placeholder="Password"></input>
           </div>
           <div className="Login__panel__content__checkbox">
             <input type="checkbox"></input>
@@ -50,7 +51,7 @@ function Login() {
           </div>
           <button
             className="Login__panel__button"
-            onClick={() => attemptLogin()}
+            onClick={() => DoStuff(document.getElementById("user"), document.getElementById("pass"))}
           >
             Sign In
           </button>
