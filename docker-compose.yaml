@@ -1,0 +1,9 @@
+services:
+  service:
+    build: ./service
+    network_mode: "host"
+  client:
+    build: ./client
+    depends_on:
+      - service
+    network_mode: "host"
