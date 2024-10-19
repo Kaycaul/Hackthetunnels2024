@@ -5,6 +5,7 @@ import "./Login.style.scss";
 
 function Login() {
   const [message, setMessage] = useState(null);
+  const [count, setCount] = useState(0);
   const { login } = useAccountContext();
 
   const attemptLogin = async () => {
@@ -30,6 +31,12 @@ function Login() {
                 MyCarletonOne
               </a>{" "}
               username and password.
+            </div>
+            <div>
+              <p>You clicked {count} times</p>
+              <button onClick={() => setCount(count + 1)}>
+                Click me
+              </button>
             </div>
           </div>
           {message && <p>{message}</p>}
