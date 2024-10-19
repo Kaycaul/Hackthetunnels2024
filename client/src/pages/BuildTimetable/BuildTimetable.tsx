@@ -69,6 +69,7 @@ function BuildTimetable() {
             />
           </Section>
         )}
+        
         <Section title="Draft Timetable">
           <div>{timetableName}</div>
           <input type="text" id = "timetable" placeholder="New timetable name"></input>
