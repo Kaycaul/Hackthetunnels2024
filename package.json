@@ -3,6 +3,6 @@
     "prettier": "^3.3.3"
   },
   "scripts": {
-    "check": "prettier --check '{layouts,assets}/**/*.{css,scss,html,js}'"
+    "check": "prettier --check '{layouts,assets}/**/*.{css,scss,html,js,jsx,tsx,scss}'"
   }
 }
