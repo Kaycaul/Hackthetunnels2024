@@ -17,6 +17,11 @@ function BuildTimetable() {
   const [scheduledEvents, setScheduledEvents] = useState<ScheduledEvent[]>([]);
   const [selectedEvents, setSelectedEvents] = useState<ScheduledEvent[]>([]);
   const navigate = useNavigate();
+  const [timetableName, setTimeTableName] = useState("Unnamed timetable")
+
+  function DoStuff(tt) {
+    setTimeTableName(tt.value)
+  }
 
   const fetchScheduledEvents = async () => {
     const result = await ServiceAPI.fetchScheduledEvents();
@@ -65,6 +70,11 @@ function BuildTimetable() {
           </Section>
         )}
         <Section title="Draft Timetable">
+          <div>{timetableName}</div>
+          <input type="text" id = "timetable" placeholder="New timetable name"></input>
+          <button onClick={() => DoStuff(document.getElementById("timetable"))}>
+            Save name
+          </button>
           <TimetableSection
             selectedEvents={selectedEvents.map((event: ScheduledEvent) =>
               scheduledEventToCalendarBlock(event),
