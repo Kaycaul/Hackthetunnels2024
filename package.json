@@ -3,6 +3,6 @@
     "prettier": "^3.3.3"
   },
   "scripts": {
-    "check": "prettier --check '{client,service}/**/*.{css,scss,html,js,jsx,tsx}'"
+    "check": "prettier --check '{client,service}/**/*.{css,scss,html,js,jsx,tsx}' --write"
   }
 }
